@@ -1,8 +1,8 @@
 package com.pdinc.weatherapp.data.models
 
-import com.codingblocks.weatherapp.data.model.NetworkWeatherCondition
-import com.codingblocks.weatherapp.data.model.NetworkWeatherDescription
-import com.codingblocks.weatherapp.data.model.Wind
+import com.pdinc.weatherapp.data.models.NetworkWeatherCondition
+import com.pdinc.weatherapp.data.models.NetworkWeatherDescription
+import com.pdinc.weatherapp.data.models.Wind
 import com.google.gson.annotations.SerializedName
 
 

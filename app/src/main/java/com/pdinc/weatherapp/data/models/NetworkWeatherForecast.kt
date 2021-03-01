@@ -1,6 +1,5 @@
 package com.pdinc.weatherapp.data.models
 
-import com.codingblocks.weatherapp.data.model.Wind
 import com.google.gson.annotations.SerializedName
 
 data class NetworkWeatherForecast(
