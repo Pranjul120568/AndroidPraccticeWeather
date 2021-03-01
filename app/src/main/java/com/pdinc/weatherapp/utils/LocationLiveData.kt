@@ -36,7 +36,7 @@ class LocationLiveData(context: Context) : LiveData<LocationModel>() {
         fusedLocationClient.requestLocationUpdates(
                 locationRequest,
                 locationCallback,
-                null
+            null
         )
     }
 

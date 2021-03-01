@@ -1,4 +1,4 @@
-package com.codingblocks.weatherapp.ui.home
+package com.pdinc.weatherapp.ui
 
 import android.Manifest
 import android.app.Activity
@@ -13,6 +13,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import com.codingblocks.weatherapp.ui.home.HomeViewModel
 import com.google.android.material.snackbar.Snackbar
 import com.pdinc.weatherapp.R
 import com.pdinc.weatherapp.WeatherApplication
@@ -22,7 +23,7 @@ import com.pdinc.weatherapp.utils.SharedPreferenceHelper
 import com.pdinc.weatherapp.utils.observeOnce
 
 class HomeFragment : Fragment() {
-lateinit var binding:HomeFragment
+    lateinit var binding: HomeFragment
     private lateinit var homeView: View
     private var isGPSEnabled = false
     private lateinit var prefs: SharedPreferenceHelper
@@ -94,7 +95,7 @@ lateinit var binding:HomeFragment
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        homeView =  inflater.inflate(R.layout.home_fragment, container, false)
+        homeView =  inflater.inflate(R.layout.fragment_home, container, false)
         return view;
     }
 

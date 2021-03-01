@@ -16,13 +16,13 @@ class WeatherRepositoryImpl(
 ) : WeatherRepository {
 
     override suspend fun getWeather(
-            location: LocationModel,
+            locationModel: LocationModel,
             refresh: Boolean
     ): Result<Weather> =
             withContext(ioDispatcher) {
                 if (refresh) {
                     val mapper = WeatherMapperRemote()
-                    when (val response = remoteDataSource.getWeather(location)) {
+                    when (val response = remoteDataSource.getWeather(locationModel)) {
                         is Result.Success -> {
                             if (response.data != null) {
                                 Result.Success(mapper.transfromToDomain(response.data))
@@ -49,16 +49,15 @@ class WeatherRepositoryImpl(
             }
 
     override suspend fun getWeatherForecast(
-            cityId: Int,
-            refresh: Boolean
+        cityId: Int,
+        refresh: Boolean
     ): Result<List<WeatherForecast>> = withContext(ioDispatcher) {
         if (refresh) {
             val mapper = WeatherForecastMapperRemote()
-            when(
-            val response = remoteDataSource.getWeatherForecast(cityId)) {
+            when (val response = remoteDataSource.getWeatherForecast(cityId)) {
                 is Result.Success -> {
                     if (response.data != null) {
-                        Result.Success(mapper.(response.data))
+                        Result.Success(mapper.transfromToDomain(response.data))
                     } else {
                         Result.Success(null)
                     }
@@ -70,7 +69,6 @@ class WeatherRepositoryImpl(
 
                 else -> Result.Loading
             }
-
         } else {
             val mapper = WeatherForecastMapperLocal()
             val forecast = localDataSource.getForecastWeather()
