@@ -19,7 +19,6 @@ class GpsUtil(private val context: Context) {
     private val locationSettingsRequest: LocationSettingsRequest?
     private val locationManager =
             context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-
     init {
         val builder = LocationSettingsRequest.Builder()
                 .addLocationRequest(LocationLiveData.locationRequest)

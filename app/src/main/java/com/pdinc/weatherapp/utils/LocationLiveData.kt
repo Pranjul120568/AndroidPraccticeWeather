@@ -39,7 +39,6 @@ class LocationLiveData(context: Context) : LiveData<LocationModel>() {
             null
         )
     }
-
     private val locationCallback = object : LocationCallback() {
         override fun onLocationResult(locationResult: LocationResult?) {
             locationResult ?: return
@@ -48,14 +47,12 @@ class LocationLiveData(context: Context) : LiveData<LocationModel>() {
             }
         }
     }
-
     private fun setLocationData(location: Location) {
         value = LocationModel(
                 longitude = location.longitude,
                 latitude = location.latitude
         )
     }
-
     companion object {
         val locationRequest: LocationRequest = LocationRequest.create().apply {
             interval = 10000

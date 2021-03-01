@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -23,7 +24,6 @@ import com.pdinc.weatherapp.utils.SharedPreferenceHelper
 import com.pdinc.weatherapp.utils.observeOnce
 
 class HomeFragment : Fragment() {
-    lateinit var binding: HomeFragment
     private lateinit var homeView: View
     private var isGPSEnabled = false
     private lateinit var prefs: SharedPreferenceHelper
@@ -34,8 +34,8 @@ class HomeFragment : Fragment() {
             requireActivity().application
         )
     }
-
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         prefs = SharedPreferenceHelper.getInstance(requireContext())
         GpsUtil(requireContext()).turnGPSOn(object : GpsUtil.OnGpsListener {
@@ -79,7 +79,7 @@ class HomeFragment : Fragment() {
 
             !isGPSEnabled -> {
                 Snackbar.make(
-                    homeView.rootView,
+                    homeView.findViewById<FrameLayout>(R.id.root),
                     "GPS is required for this application to function!",
                     Snackbar.LENGTH_SHORT
                 ).show()
@@ -121,7 +121,7 @@ class HomeFragment : Fragment() {
                 when (requestCode) {
                     GPS_REQUEST_CHECK_SETTINGS -> {
                         Snackbar.make(
-                            homeView.rootView,
+                            homeView.findViewById<FrameLayout>(R.id.root),
                             "Enable your GPS and restart!",
                             Snackbar.LENGTH_LONG
                         ).show()

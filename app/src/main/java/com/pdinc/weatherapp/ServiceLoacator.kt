@@ -9,7 +9,6 @@ import com.pdinc.weatherapp.data.source.remote.WeatherRemoteDataSourceImpl
 import com.pdinc.weatherapp.data.source.repo.WeatherRepository
 import com.pdinc.weatherapp.data.source.repo.WeatherRepositoryImpl
 
-
 object ServiceLocator {
 
     private var database: WeatherDatabse? = null
